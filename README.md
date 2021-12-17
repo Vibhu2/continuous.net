@@ -3,13 +3,11 @@
 Address :- 1 Meadowlands Plaza, Suite 200,East Rutherford, NJ 07073  
 Phno:- +1(973)218-5770
 
-## Todo
-[ ] myapplications.microsoft.com ( add remaining portals to my applications portal )
-[] Met1 has no CTO
+## Todo List
+[ ] myapplications.microsoft.com ( add remaining portals to my applications portal )  
+[X] Met1 has no CTO
 
-<ReactMarkdown allowDangerousHtml={true}>
-<iframe width="100%" height="500" frameborder="0" scrolling="yes" src="https://continuousnet-my.sharepoint.com/personal/vbhatnagar_continuous_net/_layouts/15/Doc.aspx?sourcedoc={1ef5bda4-2d16-4cc9-b15c-419f1ee3c453}&action=embedview&AllowTyping=True&Item='Book1'!A1%3AG1&wdHideGridlines=True&wdDownloadButton=True&wdInConfigurator=True"></iframe>
-<ReactMarkdown/>
+
 ## Major Clients
 
 | **NEU**   | **Neurosurgeons of NJ**                   |
@@ -22,220 +20,546 @@ Phno:- +1(973)218-5770
 | COA       | Coastal Supply Group                      |
 | DFO       | DiFazio and Sons                          |
 
+
+
 <details>
-  <summary>Total list of Clients</summary>
+  <summary>CTO list</summary>
+  <table>
+    <tr>
+        <td>Account ID</td>
+        <td>Company</td>
+        <td>CAM</td>
+        <td>Secondary CAM</td>
+        <td>QBR</td>
+        <td>VCIO</td>
+    </tr>
+    <tr>
+        <td>AVL</td>
+        <td>Avanti Linens</td>
+        <td>Alec McMeen</td>
+        <td>Edwin Javier</td>
+        <td>Quarterly</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>LLC</td>
+        <td>Lubriplate Lubricants</td>
+        <td>Alec McMeen</td>
+        <td>Ryan Bennett</td>
+        <td>Bi-Annually</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>NEU</td>
+        <td>Neurosurgeons Of NJ</td>
+        <td>Alec McMeen</td>
+        <td>Robert Sawyer</td>
+        <td>Quarterly</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>PRES</td>
+        <td>Prestige Capital Management</td>
+        <td>Alec McMeen</td>
+        <td>Edwin Javier</td>
+        <td>Bi-Annually</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>UNI</td>
+        <td>Unichem USA</td>
+        <td>Alec McMeen</td>
+        <td>Edwin Javier</td>
+        <td>Quarterly</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>WHI</td>
+        <td>White Toque</td>
+        <td>Alec McMeen</td>
+        <td>Ryan Bennett</td>
+        <td>Quarterly</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>ADS</td>
+        <td>Advanced Data Systems</td>
+        <td>Edwin Javier</td>
+        <td>Steven Palma</td>
+        <td>Bi-Annually</td>
+        <td>Jason Silverglate</td>
+    </tr>
+    <tr>
+        <td>AGM</td>
+        <td>Agam Capital Management</td>
+        <td>Edwin Javier</td>
+        <td>Alec McMeen</td>
+        <td>Bi-Annually</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>AMT</td>
+        <td>Association Master Trust</td>
+        <td>Edwin Javier</td>
+        <td>Robert Sawyer</td>
+        <td>Quarterly</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>ATL</td>
+        <td>At Last Sportswear</td>
+        <td>Edwin Javier</td>
+        <td>Ryan Bennett</td>
+        <td>Quarterly</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>CMS</td>
+        <td>Commsult</td>
+        <td>Edwin Javier</td>
+        <td>Ryan Bennett</td>
+        <td>Bi-Annually</td>
+        <td>Ross Brouse</td>
+    </tr>
+    <tr>
+        <td>DTR</td>
+        <td>Downtown Records</td>
+        <td>Edwin Javier</td>
+        <td>Ryan Bennett</td>
+        <td>Bi-Annually</td>
+        <td>Jason Silverglate</td>
+    </tr>
+    <tr>
+        <td>GDS</td>
+        <td>Gentle Dentistry</td>
+        <td>Edwin Javier</td>
+        <td>Robert Sawyer</td>
+        <td>Bi-Annually</td>
+        <td>Jason Silverglate</td>
+    </tr>
+    <tr>
+        <td>NEW</td>
+        <td>New York Mutual Trading Company</td>
+        <td>Edwin Javier</td>
+        <td>Ryan Bennett</td>
+        <td></td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>PIE</td>
+        <td>Pier Capital</td>
+        <td>Edwin Javier</td>
+        <td>Alec McMeen</td>
+        <td>Bi-Annually</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>PDG</td>
+        <td>Princeton Dental Group</td>
+        <td>Edwin Javier</td>
+        <td>Robert Sawyer</td>
+        <td>Bi-Annually</td>
+        <td>Jason Silverglate</td>
+    </tr>
+    <tr>
+        <td>SCM</td>
+        <td>Source Communications</td>
+        <td>Edwin Javier</td>
+        <td>Ryan Bennett</td>
+        <td>Bi-Annually</td>
+        <td>Jason Silverglate</td>
+    </tr>
+    <tr>
+        <td>CSG</td>
+        <td>Childsmiles</td>
+        <td>Robert Sawyer</td>
+        <td>Alec McMeen</td>
+        <td>Quarterly</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>APT</td>
+        <td>American Panel Tec</td>
+        <td>Ryan Bennett</td>
+        <td>Steven Palma</td>
+        <td>Bi-Annually</td>
+        <td>Richie Trivedi</td>
+    </tr>
+    <tr>
+        <td>APD</td>
+        <td>American Parkinsons Disease Association</td>
+        <td>Ryan Bennett</td>
+        <td>Steven Palma</td>
+        <td>Quarterly</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>ABP</td>
+        <td>Architectural Bldg / ATC / Genetech / Universal Wall</td>
+        <td>Ryan Bennett</td>
+        <td>Steven Palma</td>
+        <td>Bi-Annually</td>
+        <td>Richie Trivedi</td>
+    </tr>
+    <tr>
+        <td>COA</td>
+        <td>Coastal Supply Group</td>
+        <td>Ryan Bennett</td>
+        <td>Steven Palma</td>
+        <td>Quarterly</td>
+        <td>Richie Trivedi</td>
+    </tr>
+    <tr>
+        <td>CON</td>
+        <td>Control Electric</td>
+        <td>Ryan Bennett</td>
+        <td>Steven Palma</td>
+        <td>Quarterly</td>
+        <td>Richie Trivedi</td>
+    </tr>
+    <tr>
+        <td>DFO</td>
+        <td>DiFazio / Faztec / Essco</td>
+        <td>Ryan Bennett</td>
+        <td>Edwin Javier</td>
+        <td>Quarterly</td>
+        <td>Richie Trivedi</td>
+    </tr>
+    <tr>
+        <td>ITM</td>
+        <td>"Itmas, Inc"</td>
+        <td>Ryan Bennett</td>
+        <td>Steven Palma</td>
+        <td>Bi-Annually</td>
+        <td>Richie Trivedi</td>
+    </tr>
+    <tr>
+        <td>MET1</td>
+        <td>Metro One / Carrabba / Krazy House</td>
+        <td>Ryan Bennett</td>
+        <td>Steven Palma</td>
+        <td>Quarterly</td>
+        <td>Richie Trivedi</td>
+    </tr>
+    <tr>
+        <td>HAUS</td>
+        <td>Neuhaus Chocolates</td>
+        <td>Ryan Bennett</td>
+        <td>Edwin Javier</td>
+        <td>Bi-Annually</td>
+        <td>Ross Brouse</td>
+    </tr>
+    <tr>
+        <td>DEC</td>
+        <td>Decotech Inc</td>
+        <td>Steven Palma</td>
+        <td>Edwin Javier</td>
+        <td>Quarterly</td>
+        <td>Jason Silverglate</td>
+    </tr>
+    <tr>
+        <td>IAB</td>
+        <td>Interactive Advertising Bureau</td>
+        <td>Steven Palma</td>
+        <td>Robert Sawyer</td>
+        <td>Quarterly</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>MOB</td>
+        <td>Mobile Health</td>
+        <td>Steven Palma</td>
+        <td>Tarun Thakur</td>
+        <td>Bi-Annually</td>
+        <td>Jason Silverglate</td>
+    </tr>
+    <tr>
+        <td>HVI</td>
+        <td>Healthview</td>
+        <td>Tarun Thakur</td>
+        <td>Steven Palma</td>
+        <td>Bi-Annually</td>
+        <td>Richie Trivedi</td>
+    </tr>
+    <tr>
+        <td>MDM</td>
+        <td>MD Manage</td>
+        <td>Tarun Thakur</td>
+        <td>Ryan Bennett</td>
+        <td>Quarterly</td>
+        <td>Richie Trivedi</td>
+    </tr>
+</table>
+</details>
 
-| Company ID | Company Name                                       |
-|------------|----------------------------------------------------|
-| ARRI       | Arrieros Quality Foods                             |
-| ARRI2      | Arrieros Quality Foods 2                           |
-| HPM        | 1/2 Price Movers                                   |
-| JCF        | 10th Judicial Circuit of Florida                   |
-| ABCO       | ABCO Refrigeration                                 |
-| ADCO       | ADCO Electric                                      |
-| ADI        | AdDaptive Intelligence                             |
-| ATM        | AdTrustMedia                                       |
-| ADS        | Advanced Data Systems Corporation                  |
-| AGM        | Agam Capital Management                            |
-| ALL        | Alliance Auto Parts                                |
-| ALT        | Altitude Fuel, Inc                                 |
-| AFS        | American Financial Security Life Insurance Company |
-| AID        | American International Designs                     |
-| APDO       | American Parkinsons (OHIO CHAPTER)                 |
-| APDM       | American Parkinsons Disease - MO                   |
-| APD        | American Parkinsons Disease Association            |
-| APPE       | Appelli Interiors LLC                              |
-| ARC        | Archinet.com LLC                                   |
-| ABP        | Architectural Building Products                    |
-| ASH        | Asphalt Green                                      |
-| AMT        | Association Master Trust                           |
-| ATL        | At Last Sportswear                                 |
-| ATC        | ATC Caulking                                       |
-| BME        | Audience Partners                                  |
-| AVL        | Avanti Linens                                      |
-| BEE        | Beechwood Organization                             |
-| BEY        | Beyar's Market                                     |
-| BIA        | Biagini Grassi Advisory Group LLC                  |
-| BRA        | Brands NYC                                         |
-| CAMP       | Campa Construction Corp                            |
-| CARG       | Cargo Compass                                      |
-| CARI       | Cariuty Consultants                                |
-| CARR       | Carrabba Inc (Metro One LPSG)                      |
-| CEC        | Ceco Electric                                      |
-| CHG        | CH Global Holdings LLC                             |
-| CHA        | Chaco Group LLC                                    |
-| KRY        | Charles Krypell Inc.                               |
-| CHAR       | Charter Linkz                                      |
-| CSG        | ChildSmiles Group, LLC                             |
-| CLA        | Classic Protection                                 |
-| CLW        | Cleanwater of New York                             |
-| CCC        | Clermont Communications Corp.                      |
-| CLI        | Clinical Laboratory Reference                      |
-| CLJ        | CLJ Building                                       |
-| CEG        | Cloud Equity Group                                 |
-| COA        | Coastal Supply Group                               |
-| COG        | Cognitive Therapy of SI                            |
-| CAM        | ColocationAmerica                                  |
-| CDNW       | Columbia Doctors Neurosurgery Westchester (Bronxvi |
-| CMS        | Commsult                                           |
-| COM        | Comodo Security Solutions                          |
-| CON        | Control Electric                                   |
-| COR        | Corman USA Inc                                     |
-| CRES       | Crescent Industries                                |
-| CRI        | Critical Business Analysis, Inc.                   |
-| CRON       | Cron Agency Inc.                                   |
-| CSL        | CSL Global Limited                                 |
-| CTC        | CTC Transp Ins Services LLC                        |
-| DEC        | Decor, Inc.                                        |
-| HER        | Denise Heron                                       |
-| DFO        | DiFazio Industries                                 |
-| DKS        | DK Singh                                           |
-| DPG        | Douglass Park Group                                |
-| DTR        | Downtown Records, LLC                              |
-| CHOI       |  Dr. John JK Choi, DMD, PC                         |
-| KAR        | Dr. Karimi - NJ                                    |
-| GOR        | Dr. Stephen Gordon                                 |
-| EJE        | E-J Electric Installation Co                       |
-| EFP        | Earth Friendly Products                            |
-| RUF        | Emil Rufolo, CPA, PLLC                             |
-| ESS        | ESSCO Truck & Equipment Inc.                       |
-| ELF        | Ettinger Law Firm                                  |
-| EVO        | Evolutika, LLC (Igor)                              |
-| ECL        | Excell Clinical Lab (MdManage)                     |
-| EXCUPS     | ExcessUPS                                          |
-| EXE        | Executive Suites                                   |
-| EXT        | Extec Solutions                                    |
-| EZP        | EZ Ping Networks                                   |
-| FASS       | Fass Usa, Inc                                      |
-| FAZ        | Faztec Industries                                  |
-| FOX        | Fox Broadcasting                                   |
-| FRA        | Francine Pickett Cohen Attorney at Law             |
-| FRI        | Friedman Consulting                                |
-| FXC        | FXCL Markets Ltd.                                  |
-| GAR        | Garcia (Coastal)                                   |
-| GEN        | Genetech Building Systems                          |
-| GDS        | Gentle Dentistry                                   |
-| GGN        | Gigantic Nano                                      |
-| GIL        | Gilman Architects, PC.                             |
-| GIA        | Global IT Associates                               |
-| GLO        | Globetrans Network Inc.                            |
-| GMA        | GMA Electric                                       |
-| GFI        | GoFor IT, Inc (getitonsite.com)                    |
-| HAM        | Hampton Inn and Suites                             |
-| HEA        | Healthalytica                                      |
-| HVI        | HealthView, Inc.                                   |
-| HLT        | Helix Linear Technologies                          |
-| HIG        | Higher Level Education                             |
-| HILL       | Hilltop MRI                                        |
-| HIL        | Hilton Garden Inn                                  |
-| HAV        | Hostavps.com                                       |
-| IAB        | Interactive Advertising Bureau                     |
-| ITM        | Itmas, Inc (G)                                     |
-| JSA        | J-Star and Associates                              |
-| SAV        | Jared M. Savino, CPA PLLC                          |
-| JMW        | Jessie M. Williams, CPA MBA                        |
-| JKP        | JK Petroleum Inc                                   |
-| JODH       | JODHPURI, INC.                                     |
-| JOHN       | John A. Marino                                     |
-| GUL        | John P. Gulino & Associates                        |
-| JWC        | JW Carrigan LLC                                    |
-| KAY        | Kay and Sons LLC                                   |
-| KEL        | Kelly & Company CPA's                              |
-| KSS        | Kenneth Shuler Schools of Cosmetology              |
-| KIS        | Kiswire                                            |
-| KRA        | Krazy House Customs (Metro One LPSG)               |
-| LHM        | Lake Hopatcong Marine                              |
-| PAT        | Law Office of Milan C. Patel, P.C.                 |
-| PRIN       | Law Office of Susan Principato                     |
-| LEA        | Leading Edge Administrators                        |
-| LEM        | Lemor Development Group                            |
-| LIF        | LifTec                                             |
-| LORI       | Lori Martin                                        |
-| LRSC       | LRS Communications, Inc                            |
-| LLC        | Lubriplate Lubricants Company                      |
-| MAG        | Magne Safety LLC                                   |
-| MBIA       | Mark V. Biagini                                    |
-| MAR        | Marolli NYC                                        |
-| SCU        | Maryanne Scudieri                                  |
-| MAT        | Mathews Nichols & Associates                       |
-| MDO        | Matthew Dodd                                       |
-| MDM        | MD Manage                                          |
-| MDR        | MD Reports                                         |
-| MET1       | Metro One LPSG                                     |
-| ARAM       | Michael Aram, Inc.                                 |
-| MLP        | ML Perry, CPA                                      |
-| MNC        | MNC Contracting LLC                                |
-| MOB        | Mobile Health                                      |
-| MOLA       | Mola Sheet Metal                                   |
-| NMC        | NameCheap                                          |
-| VISO       | Neil Visoky                                        |
-| HAUS       | Neuhaus Inc.                                       |
-| NYCC       | New York Cardiocare PLLC                           |
-| NEW        | New York Mutual Trading                            |
-| NYCP       | New York Payroll                                   |
-| NEU        | NSONJ, LLC                                         |
-| OPIN       | Opinion Corp                                       |
-| PITY       | Our Lady of Pity - St. Anthony of Padua Religious  |
-| OXF        | Oxford Health Care                                 |
-| Park       | Parkchester Preservation Mgt. LLC                  |
-| PTE        | Patriot Environmental                              |
-| PEC        | Peco Pallet, Inc.                                  |
-| PENN       | Penn South Federal Credit Union                    |
-| PNE        | Penner Elbow                                       |
-| MEM        | Pharmaspectra                                      |
-| PIE        | Pier Capital                                       |
-| PRE        | Premier Glass                                      |
-| PRES       | Prestige Capital                                   |
-| PDG        | Princeton Dental Group                             |
-| LAN        | PURESEND                                           |
-| RME        | Rackmounts Etc                                     |
-| RSAN       | Rent Stabilization Association of NYC              |
-| AMDS       | Rezolut (AMDS)                                     |
-| RGNS       | RG Network Solutions                               |
-| RBDESIGN   | Ross Brouse Design                                 |
-| RPB        | RP Baking                                          |
-| RSAE       | RSA Express, Inc                                   |
-| S1C        | S-One Communications, Inc.                         |
-| SJS        | S&J Sheet Metal Supply Co., Inc                    |
-| DAVE       | Sangeeta Dave MD, PC                               |
-| SEC        | Scholes Electric and Communications                |
-| CCA        | Sectigo Limited                                    |
-| SGI        | Sentry Grand Insurance Group                       |
-| QTR        | ShenZhen Quantum Software Co Limited               |
-| SIE        | SI Excelsior, LLC                                  |
-| SID        | Sidney Finkelstein, P.A.                           |
-| SIGN       | Sign Design Group, Inc.                            |
-| SII        | sii HQ                                             |
-| SNS        | Slate & Stone                                      |
-| SDS        | Solara Data Systems                                |
-| SCM        | Source Communications                              |
-| SWA        | Southwest Airlines                                 |
-| SPIR       | Spirit Airlines Inc                                |
-| SCHU       | Steve Schubak                                      |
-| GAL        | Steven Galan, CPA                                  |
-| LAND       | Steven Land                                        |
-| FLUM       | Stuart J. Flum CPA & Associates                    |
-| TNCO       | Tenneco Automotive Operating Company               |
-| TESTCADRE  | Test CadreNET                                      |
-| TGHA       | The Beauty Institute                               |
-| TFS        | The Food Solution                                  |
-| RAW        | The RAW Group                                      |
-| DYN        | Then & Now Window Company                          |
-| HARR       | Tim Harrison and Associates                        |
-| TGU        | TONI&GUY USA, LLC                                  |
-| UNI        | Unichem Pharmaceuticals (USA), Inc.                |
-| UVW        | Universal Wall                                     |
-| UC         | University Communications                          |
-| URSB       | URSB                                               |
-| VGG        | VG Growth Partners                                 |
-| VIL        | Villa Restaurant Group Inc.                        |
-| VIS        | Vishal Enterprises, Inc                            |
-| VFU        | Vitaliy Fuks                                       |
-| VNA        | VNA - Visiting Nurse Association                   |
-| WAY        | Way Art, Inc                                       |
-| WHI        | White Toque, LLC                                   |
-| ZIM        | Zim                                                |
-
+<details>
+  <summary>Total list of Clients with their acronym's</summary>
+<table>
+    <tr>
+        <td>Account ID</td>
+        <td>Company</td>
+        <td>CAM</td>
+        <td>Secondary CAM</td>
+        <td>QBR</td>
+        <td>VCIO</td>
+    </tr>
+    <tr>
+        <td>AVL</td>
+        <td>Avanti Linens</td>
+        <td>Alec McMeen</td>
+        <td>Edwin Javier</td>
+        <td>Quarterly</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>LLC</td>
+        <td>Lubriplate Lubricants</td>
+        <td>Alec McMeen</td>
+        <td>Ryan Bennett</td>
+        <td>Bi-Annually</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>NEU</td>
+        <td>Neurosurgeons Of NJ</td>
+        <td>Alec McMeen</td>
+        <td>Robert Sawyer</td>
+        <td>Quarterly</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>PRES</td>
+        <td>Prestige Capital Management</td>
+        <td>Alec McMeen</td>
+        <td>Edwin Javier</td>
+        <td>Bi-Annually</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>UNI</td>
+        <td>Unichem USA</td>
+        <td>Alec McMeen</td>
+        <td>Edwin Javier</td>
+        <td>Quarterly</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>WHI</td>
+        <td>White Toque</td>
+        <td>Alec McMeen</td>
+        <td>Ryan Bennett</td>
+        <td>Quarterly</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>ADS</td>
+        <td>Advanced Data Systems</td>
+        <td>Edwin Javier</td>
+        <td>Steven Palma</td>
+        <td>Bi-Annually</td>
+        <td>Jason Silverglate</td>
+    </tr>
+    <tr>
+        <td>AGM</td>
+        <td>Agam Capital Management</td>
+        <td>Edwin Javier</td>
+        <td>Alec McMeen</td>
+        <td>Bi-Annually</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>AMT</td>
+        <td>Association Master Trust</td>
+        <td>Edwin Javier</td>
+        <td>Robert Sawyer</td>
+        <td>Quarterly</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>ATL</td>
+        <td>At Last Sportswear</td>
+        <td>Edwin Javier</td>
+        <td>Ryan Bennett</td>
+        <td>Quarterly</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>CMS</td>
+        <td>Commsult</td>
+        <td>Edwin Javier</td>
+        <td>Ryan Bennett</td>
+        <td>Bi-Annually</td>
+        <td>Ross Brouse</td>
+    </tr>
+    <tr>
+        <td>DTR</td>
+        <td>Downtown Records</td>
+        <td>Edwin Javier</td>
+        <td>Ryan Bennett</td>
+        <td>Bi-Annually</td>
+        <td>Jason Silverglate</td>
+    </tr>
+    <tr>
+        <td>GDS</td>
+        <td>Gentle Dentistry</td>
+        <td>Edwin Javier</td>
+        <td>Robert Sawyer</td>
+        <td>Bi-Annually</td>
+        <td>Jason Silverglate</td>
+    </tr>
+    <tr>
+        <td>NEW</td>
+        <td>New York Mutual Trading Company</td>
+        <td>Edwin Javier</td>
+        <td>Ryan Bennett</td>
+        <td></td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>PIE</td>
+        <td>Pier Capital</td>
+        <td>Edwin Javier</td>
+        <td>Alec McMeen</td>
+        <td>Bi-Annually</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>PDG</td>
+        <td>Princeton Dental Group</td>
+        <td>Edwin Javier</td>
+        <td>Robert Sawyer</td>
+        <td>Bi-Annually</td>
+        <td>Jason Silverglate</td>
+    </tr>
+    <tr>
+        <td>SCM</td>
+        <td>Source Communications</td>
+        <td>Edwin Javier</td>
+        <td>Ryan Bennett</td>
+        <td>Bi-Annually</td>
+        <td>Jason Silverglate</td>
+    </tr>
+    <tr>
+        <td>CSG</td>
+        <td>Childsmiles</td>
+        <td>Robert Sawyer</td>
+        <td>Alec McMeen</td>
+        <td>Quarterly</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>APT</td>
+        <td>American Panel Tec</td>
+        <td>Ryan Bennett</td>
+        <td>Steven Palma</td>
+        <td>Bi-Annually</td>
+        <td>Richie Trivedi</td>
+    </tr>
+    <tr>
+        <td>APD</td>
+        <td>American Parkinsons Disease Association</td>
+        <td>Ryan Bennett</td>
+        <td>Steven Palma</td>
+        <td>Quarterly</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>ABP</td>
+        <td>Architectural Bldg / ATC / Genetech / Universal Wall</td>
+        <td>Ryan Bennett</td>
+        <td>Steven Palma</td>
+        <td>Bi-Annually</td>
+        <td>Richie Trivedi</td>
+    </tr>
+    <tr>
+        <td>COA</td>
+        <td>Coastal Supply Group</td>
+        <td>Ryan Bennett</td>
+        <td>Steven Palma</td>
+        <td>Quarterly</td>
+        <td>Richie Trivedi</td>
+    </tr>
+    <tr>
+        <td>CON</td>
+        <td>Control Electric</td>
+        <td>Ryan Bennett</td>
+        <td>Steven Palma</td>
+        <td>Quarterly</td>
+        <td>Richie Trivedi</td>
+    </tr>
+    <tr>
+        <td>DFO</td>
+        <td>DiFazio / Faztec / Essco</td>
+        <td>Ryan Bennett</td>
+        <td>Edwin Javier</td>
+        <td>Quarterly</td>
+        <td>Richie Trivedi</td>
+    </tr>
+    <tr>
+        <td>ITM</td>
+        <td>"Itmas, Inc"</td>
+        <td>Ryan Bennett</td>
+        <td>Steven Palma</td>
+        <td>Bi-Annually</td>
+        <td>Richie Trivedi</td>
+    </tr>
+    <tr>
+        <td>MET1</td>
+        <td>Metro One / Carrabba / Krazy House</td>
+        <td>Ryan Bennett</td>
+        <td>Steven Palma</td>
+        <td>Quarterly</td>
+        <td>Richie Trivedi</td>
+    </tr>
+    <tr>
+        <td>HAUS</td>
+        <td>Neuhaus Chocolates</td>
+        <td>Ryan Bennett</td>
+        <td>Edwin Javier</td>
+        <td>Bi-Annually</td>
+        <td>Ross Brouse</td>
+    </tr>
+    <tr>
+        <td>DEC</td>
+        <td>Decotech Inc</td>
+        <td>Steven Palma</td>
+        <td>Edwin Javier</td>
+        <td>Quarterly</td>
+        <td>Jason Silverglate</td>
+    </tr>
+    <tr>
+        <td>IAB</td>
+        <td>Interactive Advertising Bureau</td>
+        <td>Steven Palma</td>
+        <td>Robert Sawyer</td>
+        <td>Quarterly</td>
+        <td>Scott Peritzman</td>
+    </tr>
+    <tr>
+        <td>MOB</td>
+        <td>Mobile Health</td>
+        <td>Steven Palma</td>
+        <td>Tarun Thakur</td>
+        <td>Bi-Annually</td>
+        <td>Jason Silverglate</td>
+    </tr>
+    <tr>
+        <td>HVI</td>
+        <td>Healthview</td>
+        <td>Tarun Thakur</td>
+        <td>Steven Palma</td>
+        <td>Bi-Annually</td>
+        <td>Richie Trivedi</td>
+    </tr>
+    <tr>
+        <td>MDM</td>
+        <td>MD Manage</td>
+        <td>Tarun Thakur</td>
+        <td>Ryan Bennett</td>
+        <td>Quarterly</td>
+        <td>Richie Trivedi</td>
+    </tr>
+</table>
 </details>
 ____________________________________________
 
@@ -252,3 +576,13 @@ ____________________________________________
 * CadreNet
 * SentinalOne (Connectwise/SPP)
 * 1Password (Password and secret managemet)
+* DNS Filter
+* Proofpoint
+* Brightguage
+* Sophos Partner Portal
+* Auvik
+* SMTP2GO
+* Barracuda
+* Ninja
+* Synnex
+* Pax8
