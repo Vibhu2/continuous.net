@@ -303,7 +303,7 @@ ____________________________________________
 
 * IT-Glue ( Information management)
 * Office365 (our Emails)
-* Office365-Partner portal (Partner email management system)
+* Office365-Partner portal (Partner email management)
 * ConnectWise-Manage (Ticketing)
 * Connect-wise Connect (RMM)
 * Ninja-RMM (RMM)
