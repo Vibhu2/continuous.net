@@ -1,17 +1,18 @@
-# continuous.net
-[Continuous](https://www.continuous.net/)
-Address :- 1 Meadowlands Plaza, Suite 200,East Rutherford, NJ 07073  
-Phno:- +1(973)218-5770
+# [continuous.net]((https://www.continuous.net/))
+
+- Address :- 1 Meadowlands Plaza, Suite 200,East Rutherford, NJ 07073  
+- Phno:- +1(973)218-5770
+- Office Timings
 
 ## Todo List
-[ ] myapplications.microsoft.com ( add remaining portals to my applications portal )  
-[X] Met1 has no CTO  
-[ ] APT	American Panel Tec (was missing from client list)
+- [ ] myapplications.microsoft.com ( add remaining portals to my applications portal )  
+- [ ] Met1 has no CTO  
+- [ ] APT	American Panel Tec (was missing from client list)
 
 
 ## Major Clients
 
-| **NEU**   | **Neurosurgeons of NJ**                   |
+| **NEU**   | [Neurosurgeons of NJ](.\neu.md)           |
 |-----------|-------------------------------------------|
 | IAB       | Interactive Advertising Bureau            |
 | AVL       | Avanti Linens                             |
