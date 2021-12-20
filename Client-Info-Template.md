@@ -1,7 +1,10 @@
+[Home](README.md)
+
 # Client Name and brief Information
 
-- Address:-
-- PhoneNo:-
+- **Address**:-
+- **PhoneNo**:-
+- **OfficeTimings**:-
 
 ## Point of Contact if any / CTO information
 

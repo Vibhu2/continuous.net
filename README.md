@@ -20,7 +20,7 @@ Phno:- +1(973)218-5770
 | UNI       | Unichem USA                               |
 | COA       | Coastal Supply Group                      |
 | DFO       | DiFazio and Sons                          |
-
+---------------------------------------------------------
 
 
 <details>
@@ -301,13 +301,13 @@ ____________________________________________
 
 ## List of tools we are using to manage our day to day work
 
-* IT-Glue ( Information management)
-* Office365 (our Emails)
-* Office365-Partner portal (Partner email management)
-* ConnectWise-Manage (Ticketing)
-* Connect-wise Connect (RMM)
-* Ninja-RMM (RMM)
-* PRTG (Monitoring)
+* IT-Glue (Information management)
+* Office365 (our Emails)(SSO)
+* Office365-Partner portal(SSO)
+* ConnectWise-Manage (Ticketing)(SSO)
+* Connect-wise Connect (RMM)(SSO)
+* Ninja-RMM (RMM)(SSO)
+* PRTG (Monitoring)(SSO)
 * CadreNet
 * SentinalOne (Connectwise/SPP)
 * 1Password (Password and secret managemet)
@@ -318,6 +318,5 @@ ____________________________________________
 * Auvik
 * SMTP2GO
 * Barracuda
-* Ninja
 * Synnex
 * Pax8
