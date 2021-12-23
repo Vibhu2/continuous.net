@@ -1,4 +1,4 @@
-# [continuous.net]((https://www.continuous.net/))
+# [continuous.net](https://www.continuous.net/)
 
 - Address :- 1 Meadowlands Plaza, Suite 200,East Rutherford, NJ 07073  
 - Phno:- +1(973)218-5770
@@ -6,22 +6,21 @@
 
 ## Todo List
 - [ ] myapplications.microsoft.com ( add remaining portals to my applications portal )  
-- [ ] Met1 has no CTO  
 - [ ] APT	American Panel Tec (was missing from client list)
 
 
 ## Major Clients
 
-| **NEU**   | [Neurosurgeons of NJ](.\neu.md)           |
-|-----------|-------------------------------------------|
-| IAB       | Interactive Advertising Bureau            |
-| AVL       | Avanti Linens                             |
-| CSG       | Child Smiles Group                        |
-| MET1      | Metro One Loss Prevention Security Group  |
-| UNI       | Unichem USA                               |
-| COA       | Coastal Supply Group                      |
-| DFO       | DiFazio and Sons                          |
----------------------------------------------------------
+| NEU       | [Neurosurgeons of NJ](.\neu.md)                          |
+|-----------|----------------------------------------------------------|
+| IAB       | Interactive Advertising Bureau                           |
+| AVL       | [Avanti Linens](.\avl.md)                                |
+| CSG       | Child Smiles Group                                       |
+| MET1      | Metro One Loss Prevention Security Group                 |
+| UNI       | Unichem USA                                              |
+| COA       | Coastal Supply Group                                     |
+| DFO       | DiFazio and Sons                                         |
+------------------------------------------------------------------------
 
 
 <details>
@@ -311,7 +310,7 @@ ____________________________________________
 * PRTG (Monitoring)(SSO)
 * CadreNet
 * SentinalOne (Connectwise/SPP)
-* 1Password (Password and secret managemet)
+* [1Password](https://continuousnet.1password.com/) (Password and secret managemet)
 * DNS Filter
 * Proofpoint
 * Brightguage
@@ -319,5 +318,6 @@ ____________________________________________
 * Auvik
 * SMTP2GO
 * Barracuda
-* Synnex
+* Synnex ( We purchase Software licences for customers)
 * Pax8
+* Liongard
