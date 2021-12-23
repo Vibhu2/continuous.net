@@ -1,10 +1,9 @@
-[Home](README.md)
+[Home](../README.md)
 
-# [Neurosurgeons of NJ](https://www.neurosurgeonsofnewjersey.com/)
+# Client Name and brief Information
 
-- **Address**:- Customer Service and Contact Center Manager
-1200 East Ridgewood Ave. Ridgewood, NJ 07450
-- **Telephone**:- 201-327-8600 Ext: 163
+- **Address**:-
+- **PhoneNo**:-
 - **OfficeTimings**:-
 
 ## Point of Contact if any / CTO information

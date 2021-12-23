@@ -11,10 +11,10 @@
 
 ## Major Clients
 
-| NEU       | [Neurosurgeons of NJ](.\neu.md)                          |
+| NEU       | [Neurosurgeons of NJ](./ClientsAIO/neu.md)               |
 |-----------|----------------------------------------------------------|
 | IAB       | Interactive Advertising Bureau                           |
-| AVL       | [Avanti Linens](.\avl.md)                                |
+| AVL       | [Avanti Linens](./ClientsAIO/AVL.md)                     |
 | CSG       | Child Smiles Group                                       |
 | MET1      | Metro One Loss Prevention Security Group                 |
 | UNI       | Unichem USA                                              |
