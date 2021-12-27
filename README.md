@@ -318,6 +318,6 @@ ____________________________________________
 * Auvik
 * SMTP2GO
 * Barracuda
-* Synnex (We purchase Software licences for customers)
+* Synnex ( We purchase Software licences for customers )
 * Pax8
 * Liongard
