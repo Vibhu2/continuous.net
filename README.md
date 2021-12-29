@@ -321,3 +321,5 @@ ____________________________________________
 * Synnex ( We purchase Software licences for customers )
 * Pax8
 * Liongard
+
+Note :- 1password delete access (Steven Bley)

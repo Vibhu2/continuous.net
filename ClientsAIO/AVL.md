@@ -11,6 +11,7 @@
 
 ## Network / Infrastructure Diagram
 
+![alt](../images/AVI(avanti/avanti.png)
 
 ## Emails info
 
