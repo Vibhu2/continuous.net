@@ -6,7 +6,7 @@
 
 ## Todo List
 - [ ] myapplications.microsoft.com ( add remaining portals to my applications portal )  
-- [ ] APT	American Panel Tec (was missing from client list)
+- [ ] APT American Panel Tec (was missing from client list)
 
 
 ## Major Clients
