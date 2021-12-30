@@ -11,7 +11,8 @@
 
 ## Network / Infrastructure Diagram
 
-![alt](../images/AVI(avanti/avanti.png)
+<img width="20%" alt="Avanti" src="https://user-images.githubusercontent.com/25838247/147767148-1af6e97f-27b9-4979-ba9b-387ce5c01c97.PNG">
+
 
 ## Emails info
 
