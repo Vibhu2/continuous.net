@@ -319,7 +319,7 @@ ____________________________________________
 * SMTP2GO
 * Barracuda
 * Synnex ( We purchase Software licences for customers )
-* Pax8
+* Pax8 ( We purchase Software licences for customers )
 * Liongard
 
 Note :- 1password delete access (Steven Bley)
