@@ -74,3 +74,10 @@ Avanti Checklist for Replacing a Computer
 * Remove automate agent from old computer and remove computer from Automate portal
 * Remove SentinelOne and remove computer from SentinelOne portal (if applicable)
 * Remove old computer from AD
+
+## ILO 
+
+ILO IP Address - 10.100.202.7
+![image](https://user-images.githubusercontent.com/25838247/147967156-f083537e-27c7-4cfd-91a2-8c88b554d731.png)
+[LoginDetails](https://start.1password.com/open/i?a=BHTUJIYSQFEB7D4RIFQJY6AF4E&v=t2mtowrjhsaivkj4qf6zh6cnlq&i=tdjus34eh5eqzibpgdn47edscy&h=my.1password.com)
+

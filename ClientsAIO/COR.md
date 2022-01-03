@@ -51,7 +51,7 @@
 
 Plugin information
 
-These users are using this on an RDP server (ITM GENOA-RDS ) where they login to and use the software users are created on ITM GENOA-DC and users needs to be a part of below mentioned groups.
+These users are using this on an RDP server ( ITM GENOA-RDS ) where they login to and use the software users are created on ITM GENOA-DC and users needs to be a part of below mentioned groups.
 ```Powershell console
 Get-ADUser MBardin -Properties * | Select *
 Get-ADPrincipalGroupMembership mcolon | select name
@@ -64,3 +64,4 @@ Accounts
 Employees
 Terminal_Users
 ```
+Note:- Corman USA is a part of ITM (company)
