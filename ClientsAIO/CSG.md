@@ -37,7 +37,9 @@
     * Office Manager: Evelis Baez
 
 ## Network / Infrastructure Diagram
+<details>
 
+  <summary>Click to expand!</summary>
 
 ## Emails info
     Emails are configured on O365
