@@ -321,5 +321,6 @@ ____________________________________________
 * Synnex ( We purchase Software licences for customers )
 * Pax8 ( We purchase Software licences for customers )
 * Liongard
+* DUO Admin
 
 Note :- 1password delete access (Steven Bley)
