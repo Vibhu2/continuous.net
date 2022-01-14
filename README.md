@@ -322,5 +322,10 @@ ____________________________________________
 * Pax8 ( We purchase Software licences for customers )
 * Liongard
 * DUO Admin
+* VMware Horizon
+* [Bright Gauge](https://continuous.brightgauge.co)
+* SentinalOne (ConnectWise)
+* SentinalOne-SPP
+* OpsGenie
 
 Note :- 1password delete access (Steven Bley)
