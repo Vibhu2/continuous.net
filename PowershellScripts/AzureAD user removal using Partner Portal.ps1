@@ -12,7 +12,7 @@ Write-Host " please connect to a tanent"
 #>
 
 <#
-  Connecting to all the resources and importing all the Required Modules in one go.
+    Connecting to all the resources and importing all the Required Modules in one go.
 #>
 Function vbConnect-ToResources{
     Import-Module MSOnline,AzureAD,AzureADTenantID,AzureADUserFederation,MSAL.PS,NinjaRmmApi,Office365,Office365Connect,PartnerCenter,ExchangeOnlineManagement
@@ -30,7 +30,7 @@ Function vbConnect-ToResources{
 Function vbGet-PartnerSyncStatus {
     $customer = Get-PartnerCustomer
 $syncinfo= Foreach ($cust in $customer){
-  Get-MsolCompanyInformation -TenantId $cust.CustomerId 
+    Get-MsolCompanyInformation -TenantId $cust.CustomerId 
 }
 
 $syncinfo | Select-Object -Property DisplayName,DirectorySynchronizationEnabled,LastDirSyncTime,PasswordSynchronizationEnabled,LastPasswordSyncTime | Out-GridView -Title " Sync Status of all the customers"
@@ -101,11 +101,6 @@ Function vbget-MailboxPermission{
 
 
 #Disconnect-partnercenter
-
 # Review and Delicate calender permissions
-
-
-
-
 #Get-Mailbox -ResultSize 1000 | Select-Object -Property Name,DisplayName,Alias,IsDirSynced,Database,SamAccountName | Out-GridView
 
