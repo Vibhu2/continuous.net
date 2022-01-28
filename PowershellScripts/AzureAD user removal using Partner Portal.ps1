@@ -1,4 +1,8 @@
-﻿Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
+﻿# list of all the modules used in the script
+$module = "MSOnline","AzureAD","AzureADTenantID","AzureADUserFederation","MSAL.PS","NinjaRmmApi","Office365","Office365Connect","PartnerCenter","ExchangeOnlineManagement"
+
+
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
 <#Get-MsolDomain
 if($? = $True){
 
@@ -19,6 +23,7 @@ Function vbConnect-ToResources{
     Connect-PartnerCenter
     Connect-MsolService
     Connect-ExchangeOnline
+    Connect-AzureAD
 }
 
 
@@ -74,13 +79,44 @@ Function vbDelete-AzureadUser{
 #------------------------------------------------------------------------------
 
 Function vbConnect-ToClientExchange {
-
-    Import-Module ExchangeOnlineManagement
+   
+    Import-Module $module -Verbose
     Connect-ExchangeOnline
+    Connect-MsolService
 }
 
+# creating a New user on office365
 
-$username = Get-Mailbox -ResultSize 1000 | Select-Object -Property Name,DisplayName,Alias,IsDirSynced,Database,SamAccountName | Out-GridView -Title "Select the user for Calender permissions" -OutputMode Single
+New-MsolUser -UserPrincipalName test@natechamberlain.onmicrosoft.com`
+             -DisplayName "Test Account"`
+             -FirstName "Test"`
+             -LastName "Account"
+
+# Disabling a user
+
+Set-MsolUser -UserPrincipalName testingMayDeleteLater@natechamberlain.com`
+             -BlockCredential $true
+
+# setting other parameters.
+
+Set-MsolUser -UserPrincipalName "test@natechamberlain.onmicrosoft.com"`
+             -Office "Kansas City"`
+             -Title "Accounts Payable Manager"`
+             -Department "Finance"
+
+# Getting a list of all users with user properties
+
+Get-MsolUser | Select-Object UserPrincipalName, DisplayName, Department, Title, Office
+Get-msoluser | Where {$_.Department -eq "Finance"}
+
+# Changing a user password
+
+Set-MsOlUserPassword –UserPrincipalName "bertha@natechamberlain.com"`
+                     –NewPassword "Password1"`
+                     –ForceChangePassword $false
+
+
+#$username = Get-Mailbox -ResultSize 1000 | Select-Object -Property Name,DisplayName,Alias,IsDirSynced,Database,SamAccountName | Out-GridView -Title "Select the user for Calender permissions" -OutputMode Single
 
 <#
     Checking Calender Permissions of a user
