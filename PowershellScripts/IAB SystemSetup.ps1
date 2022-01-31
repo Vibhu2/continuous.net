@@ -1,18 +1,18 @@
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
 
-$LocalAdminName="continuousadmin"
-#$localAdminPassword = ConvertTo-SecureString 'hashish4\typefaces' -AsPlainText -Force
-$ninjaSource="https://app.ninjarmm.com/agent/installer/36bd05d1-c9ca-4fe5-bb1e-5f870fed0e07/interactiveadvertisingbureauny2-5.3.2848-windows-installer.msi"
-$connectwiseSource="https://cnhelp.tech/Bin/ConnectWiseControl.ClientSetup.msi?h=cnhelp.tech&p=8041&k=BgIAAACkAABSU0ExAAgAAAEAAQCFEuQhT8A%2BtzJ6J1F%2Be0IFWA7UgOKvXUBB2S8WJka3YXAW1kLptN161Gu%2Fv7TFR1y2GlWgBNAXyrx2VaoCpXIsZtmDPypxW3r%2FRHZRVRmzoo6UMEKLmnn%2FAZX8KGCGgZeqPYyxoj2rnailBNOKgn6Sb5pGo1MQlts%2BKLtnZRdMA%2BWxjq9TigVdSiMp1nFg5qfZSBIflXZ6XhaM1ac6CASXIGicxS0qh4Su9xj3tll%2Fou7BTkAfrd%2B2Xwjf0BdIpEQpNzu4Eu%2BZ95OHSgSYzCxE1JVXWi7g8qbbVJHtJeHZFs29kbJrgH8EciTOzomWQuEu5OLqxDvUAf8%2BiCCCUl%2Ft&e=Access&y=Guest&t=&c=IAB&c=NYC&c=&c=&c=&c=&c=&c="
-
+$LocalAdminName = continuousadmin
+$localAdminPassword = hashish4\typefaces
+$Computername = ""
+$ninjaSource= "https://app.ninjarmm.com/agent/installer/36bd05d1-c9ca-4fe5-bb1e-5f870fed0e07/interactiveadvertisingbureauny2-5.3.2848-windows-installer.msi"
+$connectwiseSource= "https://cnhelp.tech/Bin/ConnectWiseControl.ClientSetup.msi?h=cnhelp.tech&p=8041&k=BgIAAACkAABSU0ExAAgAAAEAAQCFEuQhT8A%2BtzJ6J1F%2Be0IFWA7UgOKvXUBB2S8WJka3YXAW1kLptN161Gu%2Fv7TFR1y2GlWgBNAXyrx2VaoCpXIsZtmDPypxW3r%2FRHZRVRmzoo6UMEKLmnn%2FAZX8KGCGgZeqPYyxoj2rnailBNOKgn6Sb5pGo1MQlts%2BKLtnZRdMA%2BWxjq9TigVdSiMp1nFg5qfZSBIflXZ6XhaM1ac6CASXIGicxS0qh4Su9xj3tll%2Fou7BTkAfrd%2B2Xwjf0BdIpEQpNzu4Eu%2BZ95OHSgSYzCxE1JVXWi7g8qbbVJHtJeHZFs29kbJrgH8EciTOzomWQuEu5OLqxDvUAf8%2BiCCCUl%2Ft&e=Access&y=Guest&t=&c=IAB&c=NYC&c=&c=&c=&c=&c=&c="
 
 # Setting up local Admin account
-$localAdminPassword = ConvertTo-SecureString 'hashish4\typefaces' -AsPlainText -Force
-New-LocalUser -Name "continuousadmin"`
+$AdminPassword = ConvertTo-SecureString $localAdminPassword -AsPlainText -Force
+New-LocalUser -Name "$LocalAdminName" `
               -FullName "continuousadmin"`
-              -Password $localAdminPassword`
+              -Password $localAdminPassword `
               -Description "continuousadmin"`
-              -AccountNeverExpires`
+              -AccountNeverExpires `
               -PasswordNeverExpires
 Add-LocalGroupMember -Group "Administrators"`
                      -Member "continuousadmin"
@@ -122,20 +122,12 @@ Get-AppxPackage *spotify* | Remove-AppPackage
 Get-AppxPackage *Xbox* | Remove-AppxPackage
 Get-AppxPackage *skype* | Remove-AppxPackage
 Get-AppxPackage *phone* | Remove-AppxPackage
-Get-AppxPackage *mixed* | Remove-AppxPackage
-Get-AppxPackage *prime* | Remove-AppxPackage
-Get-AppxPackage *news* | Remove-AppxPackage
-Get-AppxPackage *solitaire* | Remove-AppxPackage
+Get-AppxPackage *mixed* | Remove-AppxPackage  
+Get-AppxPackage *prime* | Remove-AppxPackage 
+Get-AppxPackage *news* | Remove-AppxPackage 
+Get-AppxPackage *solitaire* | Remove-AppxPackage 
 
 
 # Rename Computer according to the client
-Rename-Computer -NewName "LT-Number" -Force -Restart
-
-
-
-
-
-
-
-
+Rename-Computer -NewName $Computername -Force -Restart
 
