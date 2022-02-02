@@ -90,7 +90,7 @@ Start-Process -FilePath C:\Continuous\ninjarmm.msi /quiet -Wait
 
 # installing windows updates
 Install-Module -Name "PSWindowsUpdate" -Force
-Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -SuppressReboots
+Install-WindowsUpdate -MicrosoftUpdate -AcceptAll
 
 # Removing Windows Morddern Applications
 Get-AppxPackage *Microsoft.ZuneMusic* | Remove-AppxPackage
