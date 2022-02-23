@@ -8,14 +8,16 @@ $connectwiseSource= "https://cnhelp.tech/Bin/ConnectWiseControl.ClientSetup.msi?
 
 # Setting up local Admin account
 $AdminPassword = ConvertTo-SecureString $localAdminPassword -AsPlainText -Force
-New-LocalUser -Name "$LocalAdminName" `
+$AdminPassword = ConvertTo-SecureString $localAdminPassword -AsPlainText -Force
+New-LocalUser -Name "$LocalAdminName"`
               -FullName "continuousadmin"`
-              -Password $localAdminPassword `
+              -Password $AdminPassword `
               -Description "continuousadmin"`
               -AccountNeverExpires `
               -PasswordNeverExpires
 Add-LocalGroupMember -Group "Administrators"`
                      -Member "continuousadmin"
+
 
 # Setting up Power settings on the machine
 #Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
@@ -103,20 +105,16 @@ Get-AppxPackage *Microsoft.BingFoodAndDrink* | Remove-AppxPackage
 Get-AppxPackage *Microsoft.People* | Remove-AppxPackage
 Get-AppxPackage *Microsoft.BingFinance* | Remove-AppxPackage
 Get-AppxPackage *Microsoft.3DBuilder* | Remove-AppxPackage
-# Get-AppxPackage *Microsoft.WindowsCalculator* | Remove-AppxPackage
 Get-AppxPackage *Microsoft.BingNews* | Remove-AppxPackage
 Get-AppxPackage *Microsoft.XboxApp* | Remove-AppxPackage
 Get-AppxPackage *Microsoft.BingSports* | Remove-AppxPackage
-# Get-AppxPackage *Microsoft.WindowsCamera* | Remove-AppxPackage
 Get-AppxPackage *Microsoft.Getstarted* | Remove-AppxPackage
-# Get-AppxPackage *Microsoft.Office.OneNote* | Remove-AppxPackage
+Get-AppxPackage *Microsoft.Office.OneNote* | Remove-AppxPackage
 Get-AppxPackage *Microsoft.WindowsMaps* | Remove-AppxPackage
 Get-AppxPackage *Microsoft.MicrosoftSolitaireCollection* | Remove-AppxPackage
-# Get-AppxPackage *Microsoft.MicrosoftOfficeHub* | Remove-AppxPackage
+ Get-AppxPackage *Microsoft.MicrosoftOfficeHub* | Remove-AppxPackage
 # Get-AppxPackage *Microsoft.BingWeather* | Remove-AppxPackage
 Get-AppxPackage *Microsoft.BioEnrollment* | Remove-AppxPackage
-# Get-AppxPackage *Microsoft.WindowsStore* | Remove-AppxPackage
-# Get-AppxPackage *Microsoft.Windows.Photos* | Remove-AppxPackage
 Get-AppxPackage *Microsoft.WindowsPhone* | Remove-AppxPackage
 Get-AppxPackage *spotify* | Remove-AppPackage
 Get-AppxPackage *Xbox* | Remove-AppxPackage
@@ -125,7 +123,89 @@ Get-AppxPackage *phone* | Remove-AppxPackage
 Get-AppxPackage *mixed* | Remove-AppxPackage  
 Get-AppxPackage *prime* | Remove-AppxPackage 
 Get-AppxPackage *news* | Remove-AppxPackage 
-Get-AppxPackage *solitaire* | Remove-AppxPackage 
+Get-AppxPackage *solitaire* | Remove-AppxPackage
+Get-AppxPackage *Spotify* | Remove-AppPackage
+Get-AppxPackage *Disney* | Remove-AppPackage
+Get-AppxPackage *XboxGameCallableUI*| Remove-AppPackage
+Get-AppxPackage *Xbox*| Remove-AppPackage
+Get-AppxPackage *Reality*| Remove-AppPackage
+Get-AppxPackage *Skype*| Remove-AppPackage
+Get-AppxPackage Microsoft.XboxIdentityProvider |Remove-AppPackage
+Get-AppxPackage Microsoft.SkypeApp |Remove-AppPackage
+Get-AppxPackage Microsoft.ZuneMusic |Remove-AppPackage
+
+
+________________________________________________________________________________________________________________________________
+
+
+# Download windows app
+
+New-Item -Path C:\ -ItemType Directory -Name EZdeploy
+
+function Download-AppxPackage {
+[CmdletBinding()]
+param (
+  [string]$Uri,
+  [string]$Path = "."
+)
+   
+  process {
+    echo ""
+    $StopWatch = [system.diagnostics.stopwatch]::startnew()
+    $Path = (Resolve-Path $Path).Path
+    #Get Urls to download
+    Write-Host -ForegroundColor Yellow "Processing $Uri"
+    $WebResponse = Invoke-WebRequest -UseBasicParsing -Method 'POST' -Uri 'https://store.rg-adguard.net/api/GetFiles' -Body "type=url&url=$Uri&ring=Retail" -ContentType 'application/x-www-form-urlencoded'
+    $LinksMatch = ($WebResponse.Links | where {$_ -like '*.appx*'} | where {$_ -like '*_neutral_*' -or $_ -like "*_"+$env:PROCESSOR_ARCHITECTURE.Replace("AMD","X").Replace("IA","X")+"_*"} | Select-String -Pattern '(?<=a href=").+(?=" r)').matches.value
+    $Files = ($WebResponse.Links | where {$_ -like '*.appx*'} | where {$_ -like '*_neutral_*' -or $_ -like "*_"+$env:PROCESSOR_ARCHITECTURE.Replace("AMD","X").Replace("IA","X")+"_*"} | where {$_ } | Select-String -Pattern '(?<=noreferrer">).+(?=</a>)').matches.value
+    #Create array of links and filenames
+    $DownloadLinks = @()
+    for($i = 0;$i -lt $LinksMatch.Count; $i++){
+        $Array += ,@($LinksMatch[$i],$Files[$i])
+    }
+    #Sort by filename descending
+    $Array = $Array | sort-object @{Expression={$_[1]}; Descending=$True}
+    $LastFile = "temp123"
+    for($i = 0;$i -lt $LinksMatch.Count; $i++){
+        $CurrentFile = $Array[$i][1]
+        $CurrentUrl = $Array[$i][0]
+        #Find first number index of current and last processed filename
+        if ($CurrentFile -match "(?<number>\d)"){}
+        $FileIndex = $CurrentFile.indexof($Matches.number)
+        if ($LastFile -match "(?<number>\d)"){}
+        $LastFileIndex = $LastFile.indexof($Matches.number)
+
+        #If current filename product not equal to last filename product
+        if (($CurrentFile.SubString(0,$FileIndex-1)) -ne ($LastFile.SubString(0,$LastFileIndex-1))) {
+            #If file not already downloaded, add to the download queue
+            if (-Not (Test-Path "$Path\$CurrentFile")) {
+                "Downloading $Path\$CurrentFile"
+                $FilePath = "$Path\$CurrentFile"
+                $FileRequest = Invoke-WebRequest -Uri $CurrentUrl -UseBasicParsing #-Method Head
+                [System.IO.File]::WriteAllBytes($FilePath, $FileRequest.content)
+            }
+        #Delete file outdated and already exist
+        }elseif ((Test-Path "$Path\$CurrentFile")) {
+            Remove-Item "$Path\$CurrentFile"
+            "Removing $Path\$CurrentFile"
+        }
+        $LastFile = $CurrentFile
+    }
+    "Time to process: "+$StopWatch.ElapsedMilliseconds
+  }
+}
+
+
+if (-Not (Test-Path "C:\Support\Store")) {
+    Write-Host -ForegroundColor Green "Creating directory C:\Support\Store"
+    New-Item -ItemType Directory -Force -Path "C:\Support\Store"
+}
+
+Download-AppxPackage "https://www.microsoft.com/store/productId/9NBLGGH4NNS1" "C:\EZdeploy"
+$name= Get-ChildItem C:\EZdeploy -Filter *.appxbundle | Select-Object -Property fullname -
+
+Add-AppxPackage "C:\EZdeploy\Microsoft.DesktopAppInstaller_2021.1207.203.0_neutral_~_8wekyb3d8bbwe.appxbundle"
+Add-AppxPackage "$name"
 
 
 # Rename Computer according to the client
