@@ -486,3 +486,57 @@ Get-PnpDevice | Where-Object {$_.FriendlyName -like '*touch screen*'} | Disable-
 
 ## Enable Touch Screen Using PowerShell
 Get-PnpDevice | Where-Object {$_.FriendlyName -like '*touch screen*'} | Enable-PnpDevice -Confirm:$false
+
+#---------------------------------------------------------------------
+
+## Add Calendar Permissions in Office 365 via Powershell
+
+Install-Module -Name ExchangeOnlineManagement
+### Run the following commands to login to 365 via Powershell and login with your Office 365 admin credentials:
+Import-Module ExchangeOnlineManagement
+Connect-ExchangeOnline
+
+### You can view current calendar permissions of the specified mailbox by using following:
+Get-MailboxFolderPermission username:\calendar
+
+### You can get the list off all user’s calendars default permissions using the following command:
+Get-Mailbox –database mbxdbname| ForEach-Object {Get-MailboxFolderPermission $_”:\calendar”} | Where {$_.User -like “Default”} | Select Identity, User, AccessRights
+
+<#You can use these available access roles:
+
+Owner — read, create, modify and delete all items and folders. Also this role allows manage items permissions;
+
+PublishingEditor — read, create, modify and delete items/subfolders;
+
+Editor — read, create, modify and delete items;
+
+PublishingAuthor — read, create all items/subfolders. You can modify and delete only items you create;
+
+Author — create and read items; edit and delete own items NonEditingAuthor – full read access and create items. You can delete only your own items;
+
+Reviewer — read only;
+
+Contributor — create items and folders;
+
+AvailabilityOnly — read free/busy information from calendar;
+
+LimitedDetails;
+
+None — no permissions to access folder and files.
+#>
+
+# Now run the following command. In the example below, user2 would be able to open user1 calendar and edit it:
+Add-MailboxFolderPermission -Identity user1@domain.com:\calendar -user user2@domain.com -AccessRights Editor
+
+# If you need to change the Default permissions for the calendar folder (in order to allow all users view calendar of the specified user), run the command:
+Set-MailboxFolderPermission -Identity user1@domain.com:\calendar -User Default -AccessRights Reviewer
+
+# In some cases, you need to grant Reviewer permissions on a calendar folder in all mailboxes to all users in your Exchange organization. You can make this bulk permission change using simple PowerShell script. To change Default calendar permission for all mailbox in mailbox database to Reviewer:
+Get-Mailbox –database mbxdbname| ForEach-Object {Set-MailboxFolderPermission $_”:\calendar” -User Default -AccessRights Reviewer}
+
+# To remove permission use Remove-MailboxFolderPermission cmdlet:
+Remove-MailboxFolderPermission -Identity user1@domain.com:\calendar –user user2@domain.com
+
+# Now you can disconnect from Office 365 your session:
+Disconnect-ExchangeOnline
+
