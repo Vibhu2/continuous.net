@@ -540,3 +540,104 @@ Remove-MailboxFolderPermission -Identity user1@domain.com:\calendar –user user
 # Now you can disconnect from Office 365 your session:
 Disconnect-ExchangeOnline
 
+#--------------------------------------------------------------------------------------------------------------------------------
+
+#PowerShell Script to check for external forwarding mailboxes in all Office 365 Customer tenants
+Function Get-ExternalMailboxForwarding{
+    $credential = Get-Credential
+    Connect-MsolService -Credential $credential
+    $customers = Get-msolpartnercontract
+    foreach ($customer in $customers) {
+     
+        $InitialDomain = Get-MsolDomain -TenantId $customer.TenantId | Where-Object {$_.IsInitial -eq $true}
+         
+        Write-Host "Checking $($customer.Name)"
+        $DelegatedOrgURL = "https://outlook.office365.com/powershell-liveid?DelegatedOrg=" + $InitialDomain.Name
+        $s = New-PSSession -ConnectionUri $DelegatedOrgURL -Credential $credential -Authentication Basic -ConfigurationName Microsoft.Exchange -AllowRedirection
+        Import-PSSession $s -CommandName Get-Mailbox, Get-AcceptedDomain -AllowClobber
+        $mailboxes = $null
+        $mailboxes = Get-Mailbox -ResultSize Unlimited
+        $domains = Get-AcceptedDomain
+     
+        foreach ($mailbox in $mailboxes) {
+     
+            $forwardingSMTPAddress = $null
+            Write-Host "Checking forwarding for $($mailbox.displayname) - $($mailbox.primarysmtpaddress)"
+            $forwardingSMTPAddress = $mailbox.forwardingsmtpaddress
+            $externalRecipient = $null
+            if($forwardingSMTPAddress){
+                    $email = ($forwardingSMTPAddress -split "SMTP:")[1]
+                    $domain = ($email -split "@")[1]
+                    if ($domains.DomainName -notcontains $domain) {
+                        $externalRecipient = $email
+                    }
+     
+                if ($externalRecipient) {
+                    Write-Host "$($mailbox.displayname) - $($mailbox.primarysmtpaddress) forwards to $externalRecipient" -ForegroundColor Yellow
+     
+                    $forwardHash = $null
+                    $forwardHash = [ordered]@{
+                        Customer           = $customer.Name
+                        TenantId           = $customer.TenantId
+                        PrimarySmtpAddress = $mailbox.PrimarySmtpAddress
+                        DisplayName        = $mailbox.DisplayName
+                        ExternalRecipient  = $externalRecipient
+                    }
+                    $ruleObject = New-Object PSObject -Property $forwardHash
+                    $ruleObject | Export-Csv C:\temp\customerExternalForward.csv -NoTypeInformation -Append
+                }
+            }
+        }
+    }
+
+}
+#--------------------------------------------------------------------------------------------------------------------------------
+
+# Converting to a Shared Mailbox
+
+### Launch Windows PowerShell and run it as an Administrator.
+### Enter the Office 365 Admin Credentials of the Customer 
+
+$UserCredential = Get-Credential            
+                                                                                                                                                                                                             
+$Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri https://outlook.office365.com/powershell-liveid/ -Credential $UserCredential -Authentication Basic -AllowRedirection
+
+Import-PSSession $Session -DisableNameChecking
+
+Set-Mailbox ( enter the email address of the User ) -Type Shared
+
+exit
+#--------------------------------------------------------------------------------------------------------------------------
+
+## How to disable junk mail folder in Office 365.
+link - https://docs.microsoft.com/en-us/powershell/module/exchange/antispam-antimalware/set-mailboxjunkemailconfiguration?view=exchange-ps
+
+#--------------------------------------------------------------------------------------------------------------------------
+### Disable SPAM filtering in Office 365
+
+Set-MailboxJunkEmailConfiguration user.name -Enabled $false
+### To verify status run: 
+Get-MailboxJunkEmailConfiguration user.name
+
+### To disable SPAM filtering globally for all users withing organisation (via PowerShell):
+
+Get-Mailbox | Set-MailboxJunkEmailConfiguration –Enabled $False
+
+## Links to scripts
+### Create Unified Audit  Logs on all tenants: https://gcits.com/knowledge-base/enabling-unified-audit-log-delegated-office-365-tenants-via-powershell/
+### Enable Mailbox auditing on all tenants:  https://gcits.com/knowledge-base/enable-mailbox-auditing-on-all-users-for-all-office-365-customer-tenants/
+### Confirm and disable POP/IMAP on all tenants:  https://gcits.com/knowledge-base/disable-pop-imap-mailboxes-office-365/
+### Disable forwarding inbox rules on all tenants: https://gcits.com/knowledge-base/find-inbox-rules-forward-mail-externally-office-365-powershell/
+### Verify same name warning: https://gcits.com/knowledge-base/warn-users-external-email-arrives-display-name-someone-organisation/
+### Find out Administrators for all tenants; enable MFA and remove unwated https://gcits.com/knowledge-base/get-list-every-customers-office-365-administrators-via-powershell-delegated-administration/
+### Setup Pwned checks and email us weekly: https://gcits.com/knowledge-base/check-office-365-accounts-against-have-i-been-pwned-breaches/
+### Find all external forwarders across our tenants: https://gcits.com/knowledge-base/find-external-forwarding-mailboxes-office-365-customer-tenants-powershell/
+### Alerts for elevated privlages: https://gcits.com/knowledge-base/get-alerts-elevation-privilege-operations-office-365-customer-tenants/
+### Montior for external mailbox forwarders in all tenants: https://gcits.com/knowledge-base/monitor-external-mailbox-forwards-office-365-customer-tenants/
+### Setup IP whitelistin for our environment: https://gcits.com/knowledge-base/running-delegated-admin-powershell-scripts-with-mfa-enabled-accounts/
+### Monitor office365 Admin role changes: https://gcits.com/knowledge-base/monitor-office-365-admin-role-changes-in-all-customer-tenants/
+### Use runbooks to automate this: https://docs.microsoft.com/en-us/azure/automation/manage-office-365#:~:text=From%20your%20Automation%20account%2C%20select,Office%20365%20credential%20is%20there.   https://blog.kloud.com.au/2016/08/24/schedule-office-365-powershell-tasks-using-azure-automation/
+### https://www.thelazyadministrator.com/2019/11/20/office-365-email-address-policies-with-azure-automation/
+
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
