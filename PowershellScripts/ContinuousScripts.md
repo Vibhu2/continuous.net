@@ -78,7 +78,7 @@ Set-Mailbox -Identity <identity> -MessageCopyForSentAsEnabled $True
 ```
 
 ## Disabling junk mail in Office 365
-
+```Powershell
 Set-MailboxJunkEmailConfiguration "David Pelton" -Enabled $false
 #----------------------------------------------------------------------------------
 
@@ -113,10 +113,12 @@ Function Prepare-System {
         KEYWORDS: vdi, golden image, windows 7, optimization, powershell
  
 #> 
- 
+```
  
 ### Function to set a registry property value
 ### Create the registry key if it doesn't exist
+
+```Powershell
 Function Set-RegistryKey
 {
  [CmdletBinding()]
@@ -137,8 +139,10 @@ Function Set-RegistryKey
  $newItem = New-Item -Path $Path -Force
  
  } 
- 
- # Update registry value, create it if does not exist (DWORD is default)
+ ```
+ ### Update registry value, create it if does not exist (DWORD is default)
+
+```Powershell
  $itemProperty = Get-ItemProperty -Path $Path -Name $Name -ErrorAction SilentlyContinue
  If($itemProperty -ne $null) {
  $itemProperty = Set-ItemProperty -Path $Path -Name $Name -Value $Value
@@ -148,13 +152,16 @@ Function Set-RegistryKey
  }
  
 }
- 
+```
 ### Get script path
+
+```Powershell
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
- 
+```
 ### Set location to the root of the system drive
+```Powershell
 Set-Location -Path $env:SystemDrive
- 
+``
 ### Disable firewall on all profiles (domain, etc.) (Never disable the service!)
 netsh advfirewall set allprofiles state off | Out-Host
  
@@ -450,17 +457,17 @@ Set-RegistryKey -Path "HKUDefaultUser:\Control Panel\Desktop" -Name "DisableCurs
 Set-RegistryKey -Path "HKUDefaultUser:\Software\Microsoft\Internet Explorer\Main" -Name "Force Offscreen Composition" -Value 1
 ```
 ### Disable screensavers
-```PWSH
+```Powershell
 Set-RegistryKey -Path "HKUDefaultUser:\Software\Policies\Microsoft\Windows\Control Panel\Desktop" -Name "ScreenSaveActive" -Value 0
 Set-RegistryKey -Path "HKUDefaultUser:\Control Panel\Desktop\" -Name "ScreenSaveActive" -Value 0
 Set-RegistryKey -Path "Registry::\HKEY_USERS\.DEFAULT\Control Panel\Desktop" -Name "ScreenSaveActive" -Value 0
 ```
 ### Don't show window contents when dragging.
-```PWSH 
+```Powershell 
 Set-RegistryKey -Path "HKUDefaultUser:\Control Panel\Desktop" -Name "DragFullWindows" -Value 0
 ```
 ### Don't show window minimize/maximize animations
-```PWSH
+```Powershell
 Set-RegistryKey -Path "HKUDefaultUser:\Control Panel\Desktop\WindowMetrics" -Name "MinAnimate" -Value 0
 ```
 ### Disable font smoothing 
@@ -468,7 +475,7 @@ Set-RegistryKey -Path "HKUDefaultUser:\Control Panel\Desktop\WindowMetrics" -Nam
 Set-RegistryKey -Path "HKUDefaultUser:\Control Panel\Desktop" -Name "FontSmoothing" -Value 0
 ```
 ### Disable most other visual effects 
-```PWSH
+```powershell
 Set-RegistryKey -Path "HKUDefaultUser:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name "VisualFXSetting" -Value 3
 Set-RegistryKey -Path "HKUDefaultUser:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewAlphaSelect" -Value 0
 Set-RegistryKey -Path "HKUDefaultUser:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarAnimations" -Value 0
@@ -477,24 +484,24 @@ Set-RegistryKey -Path "HKUDefaultUser:\Software\Microsoft\Windows\CurrentVersion
 Set-RegistryKey -Path "HKUDefaultUser:\Control Panel\Desktop" -Name "UserPreferencesMask" -Value ([byte[]](0x90,0x12,0x01,0x80)) -PropertyType "Binary"
 ```
 # Disable Action Center Icon
-```PWSH
+```Powershell
 Set-RegistryKey -Path "HKUDefaultUser:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "HideSCAHealth" -Value 1
 ```
 ### Disable Network Icon
-```PWSH
+```Powershell
 Set-RegistryKey -Path "HKUDefaultUser:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "HideSCANetwork" -Value 1
 ```
 ### Disable IE Persistent Cache 
-```PWSH
+```Powershell
 Set-RegistryKey -Path "HKUDefaultUser:\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Cache" -Name "Persistent" -Value 0
 Set-RegistryKey -Path "HKUDefaultUser:\Software\Microsoft\Feeds" -Name "SyncStatus" -Value 0
 ```
 ### Remove PSDrive
-```PWSH
+```Powershell
 $psDrive = Remove-PSDrive HKUDefaultUser
 ```
 ### Clean up references not in use
-```PWSH
+```Powershell
 $variables = Get-Variable | Where { $_.Name -ne "userLoadPath" } | foreach { $_.Name }
 foreach($var in $variables) { Remove-Variable $var -ErrorAction SilentlyContinue }
 [gc]::collect()
@@ -506,28 +513,32 @@ reg unload $userLoadPath | Out-Host
 #---------------------------------------------------------------------
 
 ## Disable Touch Screen Using PowerShell
-```Pwsh
+```Powershell
 Get-PnpDevice | Where-Object {$_.FriendlyName -like '*touch screen*'} | Disable-PnpDevice -Confirm:$false
 ```
 ## Enable Touch Screen Using PowerShell
-```Pwsh
+```Powershell
 Get-PnpDevice | Where-Object {$_.FriendlyName -like '*touch screen*'} | Enable-PnpDevice -Confirm:$false
 ```
 #---------------------------------------------------------------------
 
 ## Add Calendar Permissions in Office 365 via Powershell
-
+```Powershell
 Install-Module -Name ExchangeOnlineManagement
+```
 ### Run the following commands to login to 365 via Powershell and login with your Office 365 admin credentials:
+```Powershell
 Import-Module ExchangeOnlineManagement
 Connect-ExchangeOnline
-
+```
 ### You can view current calendar permissions of the specified mailbox by using following:
+```Powershell
 Get-MailboxFolderPermission username:\calendar
-
+```
 ### You can get the list off all user’s calendars default permissions using the following command:
+```Powershell
 Get-Mailbox –database mbxdbname| ForEach-Object {Get-MailboxFolderPermission $_”:\calendar”} | Where {$_.User -like “Default”} | Select Identity, User, AccessRights
-
+```
  > You can use these available access roles:
 
 > Owner — read, create, modify and delete all items and folders. Also this role allows manage items permissions;
@@ -552,23 +563,25 @@ None — no permissions to access folder and files.
 >
 
 ### Now run the following command. In the example below, user2 would be able to open user1 calendar and edit it:
+```Powershell
 Add-MailboxFolderPermission -Identity user1@domain.com:\calendar -user user2@domain.com -AccessRights Editor
-
+```
 ### If you need to change the Default permissions for the calendar folder (in order to allow all users view calendar of the specified user), run the command:
+```Powershell
 Set-MailboxFolderPermission -Identity user1@domain.com:\calendar -User Default -AccessRights Reviewer
-
+```
 ### In some cases, you need to grant Reviewer permissions on a calendar folder in all mailboxes to all users in your Exchange organization. You can make this bulk permission change using simple PowerShell script. To change Default calendar permission for all mailbox in mailbox database to Reviewer:
-```Pwsh
+```Powershell
 Get-Mailbox –database mbxdbname| ForEach-Object {Set-MailboxFolderPermission $_”:\calendar” -User Default -AccessRights Reviewer}
 ```
 
 ### To remove permission use Remove-MailboxFolderPermission cmdlet:
-```pwsh
+```Powershell
 Remove-MailboxFolderPermission -Identity user1@domain.com:\calendar –user user2@domain.com
 ```
 
 ### Now you can disconnect from Office 365 your session:
-```Pwsh
+```Powershell
 Disconnect-ExchangeOnline
 ```
 ----------------
@@ -630,9 +643,8 @@ Function Get-ExternalMailboxForwarding{
 
 ### Launch Windows PowerShell and run it as an Administrator.
 ### Enter the Office 365 Admin Credentials of the Customer 
-
+```Powershell
 $UserCredential = Get-Credential            
-                                                                                                                                                                                                             
 $Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri https://outlook.office365.com/powershell-liveid/ -Credential $UserCredential -Authentication Basic -AllowRedirection
 
 Import-PSSession $Session -DisableNameChecking
@@ -640,37 +652,41 @@ Import-PSSession $Session -DisableNameChecking
 Set-Mailbox ( enter the email address of the User ) -Type Shared
 
 exit
-#--------------------------------------------------------------------------------------------------------------------------
+```
+____
 
 ## How to disable junk mail folder in Office 365.
 link - https://docs.microsoft.com/en-us/powershell/module/exchange/antispam-antimalware/set-mailboxjunkemailconfiguration?view=exchange-ps
 
-#--------------------------------------------------------------------------------------------------------------------------
+---------
 ### Disable SPAM filtering in Office 365
-
+```Powershell
 Set-MailboxJunkEmailConfiguration user.name -Enabled $false
+```
 ### To verify status run: 
+```Powershell
 Get-MailboxJunkEmailConfiguration user.name
-
+```
 ### To disable SPAM filtering globally for all users withing organisation (via PowerShell):
-
+```Powershell
 Get-Mailbox | Set-MailboxJunkEmailConfiguration –Enabled $False
-
+```
 ## Links to scripts
-### Create Unified Audit  Logs on all tenants: https://gcits.com/knowledge-base/enabling-unified-audit-log-delegated-office-365-tenants-via-powershell/
-### Enable Mailbox auditing on all tenants:  https://gcits.com/knowledge-base/enable-mailbox-auditing-on-all-users-for-all-office-365-customer-tenants/
-### Confirm and disable POP/IMAP on all tenants:  https://gcits.com/knowledge-base/disable-pop-imap-mailboxes-office-365/
-### Disable forwarding inbox rules on all tenants: https://gcits.com/knowledge-base/find-inbox-rules-forward-mail-externally-office-365-powershell/
-### Verify same name warning: https://gcits.com/knowledge-base/warn-users-external-email-arrives-display-name-someone-organisation/
-### Find out Administrators for all tenants; enable MFA and remove unwated https://gcits.com/knowledge-base/get-list-every-customers-office-365-administrators-via-powershell-delegated-administration/
-### Setup Pwned checks and email us weekly: https://gcits.com/knowledge-base/check-office-365-accounts-against-have-i-been-pwned-breaches/
-### Find all external forwarders across our tenants: https://gcits.com/knowledge-base/find-external-forwarding-mailboxes-office-365-customer-tenants-powershell/
-### Alerts for elevated privlages: https://gcits.com/knowledge-base/get-alerts-elevation-privilege-operations-office-365-customer-tenants/
-### Montior for external mailbox forwarders in all tenants: https://gcits.com/knowledge-base/monitor-external-mailbox-forwards-office-365-customer-tenants/
-### Setup IP whitelistin for our environment: https://gcits.com/knowledge-base/running-delegated-admin-powershell-scripts-with-mfa-enabled-accounts/
-### Monitor office365 Admin role changes: https://gcits.com/knowledge-base/monitor-office-365-admin-role-changes-in-all-customer-tenants/
-### Use runbooks to automate this: https://docs.microsoft.com/en-us/azure/automation/manage-office-365#:~:text=From%20your%20Automation%20account%2C%20select,Office%20365%20credential%20is%20there.   https://blog.kloud.com.au/2016/08/24/schedule-office-365-powershell-tasks-using-azure-automation/
-### https://www.thelazyadministrator.com/2019/11/20/office-365-email-address-policies-with-azure-automation/
+* [Create Unified Audit  Logs on all tenants:](https://gcits.com/knowledge-base/enabling-unified-audit-log-delegated-office-365-tenants-via-powershell/)
+* [Enable Mailbox auditing on all tenants:](https://gcits.com/knowledge-base/enable-mailbox-auditing-on-all-users-for-all-office-365-customer-tenants/)
+* [Confirm and disable POP/IMAP on all tenants:]( https://gcits.com/knowledge-base/disable-pop-imap-mailboxes-office-365/)
+* [Disable forwarding inbox rules on all tenants:](https://gcits.com/knowledge-base/find-inbox-rules-forward-mail-externally-office-365-powershell/)
+* [Verify same name warning:](https://gcits.com/knowledge-base/warn-users-external-email-arrives-display-name-someone-organisation/)
+* [Find out Administrators for all tenants; enable MFA and remove unwated](https://gcits.com/knowledge-base/get-list-every-customers-office-365-administrators-via-powershell-delegated-administration/)
+* [Setup Pwned checks and email us weekly:](https://gcits.com/knowledge-base/check-office-365-accounts-against-have-i-been-pwned-breaches/)
+* [Find all external forwarders across our tenants:](https://gcits.com/knowledge-base/find-external-forwarding-mailboxes-office-365-customer-tenants-powershell/)
+* [Alerts for elevated privlages:](https://gcits.com/knowledge-base/get-alerts-elevation-privilege-operations-office-365-customer-tenants/)
+* [Montior for external mailbox forwarders in all tenants:](https://gcits.com/knowledge-base/monitor-external-mailbox-forwards-office-365-customer-tenants/)
+* [Setup IP whitelistin for our environment: ](https://gcits.com/knowledge-base/running-delegated-admin-powershell-scripts-with-mfa-enabled-accounts/)
+* [Monitor office365 Admin role changes:](https://gcits.com/knowledge-base/monitor-office-365-admin-role-changes-in-all-customer-tenants/)
+* [Use runbooks to automate this:](https://docs.microsoft.com/en-us/azure/automation/manage-office-365#:~:text=From%20your%20Automation%20account%2C%20select,Office%20365%20credential%20is%20there.)  
+* [Link2](https://blog.kloud.com.au/2016/08/24/schedule-office-365-powershell-tasks-using-azure-automation/)
+* [Link3](https://www.thelazyadministrator.com/2019/11/20/office-365-email-address-policies-with-azure-automation/)
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
