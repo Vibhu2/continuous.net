@@ -477,3 +477,12 @@ foreach($var in $variables) { Remove-Variable $var -ErrorAction SilentlyContinue
 reg unload $userLoadPath | Out-Host
 
 }
+
+#---------------------------------------------------------------------
+
+## Disable Touch Screen Using PowerShell
+
+Get-PnpDevice | Where-Object {$_.FriendlyName -like '*touch screen*'} | Disable-PnpDevice -Confirm:$false
+
+## Enable Touch Screen Using PowerShell
+Get-PnpDevice | Where-Object {$_.FriendlyName -like '*touch screen*'} | Enable-PnpDevice -Confirm:$false
