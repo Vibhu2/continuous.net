@@ -1,7 +1,7 @@
-#Connecting to Powershell for Office 365
+### Connecting to Powershell for Office 365
 
 Open up Powershell as an administrator
-
+```Powershell
 $UserCredential = Get-Credential  
 
 "Enter the Office 365 admin credentials."
@@ -9,21 +9,21 @@ $UserCredential = Get-Credential
 $Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri https://outlook.office365.com/powershell-liveid/ -Credential $UserCredential -Authentication Basic -AllowRedirection
 
 Import-PSSession $Session -DisableNameChecking
-
-#----------------------------------------------------------------------
+```
+---
 
 ## Exchange PowerShell Commands (Commonly used)
 
 
-## Adding Full Access Permission:
+### Adding Full Access Permission:
 
+```Powershell
 Add-MailboxPermission "automappingmailbox" -user your mailbox -AccessRights fullaccess -AutoMapping $true
 Add-MailboxPermission -Identity maggie -user michael -AccessRights FullAccess -AutoMapping $true
-
 Remove-MailboxPermission -Identity Test1 -User Test2 -AccessRights FullAccess -InheritanceType All
-
-## Adding permissions to a users calendar:
-
+```
+### Adding permissions to a users calendar:
+```Powershell
 Add-MailboxFolderPermission anna:\Calendar -User kristin -AccessRights Editor
 
 Get-MailboxFolderPermission anna:\Calendar
@@ -47,20 +47,19 @@ PublishingEditor: CreateItems, CreateSubfolders, DeleteAllItems, DeleteOwnedItem
 PublishingAuthor: CreateItems, CreateSubfolders, DeleteOwnedItems, EditOwnedItems, FolderVisible, ReadItems
 
 Reviewer: FolderVisible, ReadItems
-
+```
 
 
 ## Adding Delegate Access via Powershell
 
-## User must have Editor access in order to be a delegate.
-
+#### User must have Editor access in order to be a delegate.
+```Powershell
 Add-MailboxFolderPermission patrick:\calendar -user john.skelton -AccessRights Editor -SharingPermissionFlags Delegate
+```
 
 
-
-## Exporting .PST from Exchange:
-
-
+#### Exporting .PST from Exchange:
+```Powershell
 New-ManagementRoleAssignment -Role "Mailbox Import Export" -User Administrator
 
 New-MailboxExportRequest -Mailbox brenda -Filepath \\mailnj01\pst2\brenda.pst
@@ -68,16 +67,15 @@ New-MailboxExportRequest -Mailbox brenda -Filepath \\mailnj01\pst2\brenda.pst
 Get-MailboxExportRequest
 
 Remove
+```
 
 ## Convert Mailbox to Shared
-
+```Powershell
 Set-Mailbox username@company.com -Type Shared
-
-
 
 Set-Mailbox -Identity <identity> -MessageCopyForSentAsEnabled $True
 
-
+```
 
 ## Disabling junk mail in Office 365
 
@@ -399,7 +397,10 @@ bcdedit /set quietboot on
  
  
 ### Perform a disk cleanup 
-# Automate by creating the reg checks corresponding to "cleanmgr /sageset:100" so we can use "sagerun:100" 
+### Automate by creating the reg checks corresponding to 
+>"cleanmgr /sageset:100" so we can use "sagerun:100" 
+```Powershell
+"cleanmgr /sageset:100" so we can use "sagerun:100" 
 Set-RegistryKey -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Active Setup Temp Folders" -Name "StateFlags0100" -Value 2
 Set-RegistryKey -Path "HKLM:\software\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Downloaded Program Files" -Name "StateFlags0100" -Value 2
 Set-RegistryKey -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Internet Cache Files" -Name "StateFlags0100" -Value 2
@@ -420,73 +421,98 @@ Set-RegistryKey -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\
 Set-RegistryKey -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Windows Error Reporting System Archive Files" -Name "StateFlags0100" -Value 2
 Set-RegistryKey -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Windows Error Reporting System Queue Files" -Name "StateFlags0100" -Value 2
 Set-RegistryKey -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Windows Upgrade Log Files" -Name "StateFlags0100" -Value 2
- 
 cleanmgr.exe /sagerun:100  | Out-Host
- 
+```
 # Customization of the default user 
+```Powershell
 $defaultUserHivePath = $env:SystemDrive + "\Users\Default\NTUSER.DAT"
 $userLoadPath = "HKU\TempUser" 
- 
-# Load Hive
+```
+### Load Hive
+```Powershell
 reg load $userLoadPath $defaultUserHivePath | Out-Host
-# Create PSDrive
+```
+### Create PSDrive
+```Powershell
 $psDrive = New-PSDrive -Name HKUDefaultUser -PSProvider Registry -Root $userLoadPath
-# Reduce menu show delay 
+```
+### Reduce menu show delay 
+```Powershell
 Set-RegistryKey -Path "HKUDefaultUser:\Control Panel\Desktop" -Name "MenuShowDelay" -Value 0
-# Disable cursor blink 
+```
+### Disable cursor blink 
+```Powershell
 Set-RegistryKey -Path "HKUDefaultUser:\Control Panel\Desktop" -Name "CursorBlinkRate" -Value -1
 Set-RegistryKey -Path "HKUDefaultUser:\Control Panel\Desktop" -Name "DisableCursorBlink" -Value 1
-# Force off-screen composition in IE 
+```
+### Force off-screen composition in IE 
+```Powershell
 Set-RegistryKey -Path "HKUDefaultUser:\Software\Microsoft\Internet Explorer\Main" -Name "Force Offscreen Composition" -Value 1
-# Disable screensavers
+```
+### Disable screensavers
+```PWSH
 Set-RegistryKey -Path "HKUDefaultUser:\Software\Policies\Microsoft\Windows\Control Panel\Desktop" -Name "ScreenSaveActive" -Value 0
 Set-RegistryKey -Path "HKUDefaultUser:\Control Panel\Desktop\" -Name "ScreenSaveActive" -Value 0
 Set-RegistryKey -Path "Registry::\HKEY_USERS\.DEFAULT\Control Panel\Desktop" -Name "ScreenSaveActive" -Value 0
-# Don't show window contents when dragging 
+```
+### Don't show window contents when dragging.
+```PWSH 
 Set-RegistryKey -Path "HKUDefaultUser:\Control Panel\Desktop" -Name "DragFullWindows" -Value 0
-# Don't show window minimize/maximize animations
+```
+### Don't show window minimize/maximize animations
+```PWSH
 Set-RegistryKey -Path "HKUDefaultUser:\Control Panel\Desktop\WindowMetrics" -Name "MinAnimate" -Value 0
-# Disable font smoothing 
+```
+### Disable font smoothing 
+```Powershell
 Set-RegistryKey -Path "HKUDefaultUser:\Control Panel\Desktop" -Name "FontSmoothing" -Value 0
- 
-# Disable most other visual effects 
+```
+### Disable most other visual effects 
+```PWSH
 Set-RegistryKey -Path "HKUDefaultUser:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name "VisualFXSetting" -Value 3
 Set-RegistryKey -Path "HKUDefaultUser:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewAlphaSelect" -Value 0
 Set-RegistryKey -Path "HKUDefaultUser:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarAnimations" -Value 0
 Set-RegistryKey -Path "HKUDefaultUser:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewWatermark" -Value 0
 Set-RegistryKey -Path "HKUDefaultUser:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewShadow" -Value 0
 Set-RegistryKey -Path "HKUDefaultUser:\Control Panel\Desktop" -Name "UserPreferencesMask" -Value ([byte[]](0x90,0x12,0x01,0x80)) -PropertyType "Binary"
- 
+```
 # Disable Action Center Icon
+```PWSH
 Set-RegistryKey -Path "HKUDefaultUser:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "HideSCAHealth" -Value 1
- 
-# Disable Network Icon
+```
+### Disable Network Icon
+```PWSH
 Set-RegistryKey -Path "HKUDefaultUser:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "HideSCANetwork" -Value 1
- 
-# Disable IE Persistent Cache 
+```
+### Disable IE Persistent Cache 
+```PWSH
 Set-RegistryKey -Path "HKUDefaultUser:\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Cache" -Name "Persistent" -Value 0
 Set-RegistryKey -Path "HKUDefaultUser:\Software\Microsoft\Feeds" -Name "SyncStatus" -Value 0
- 
-# Remove PSDrive
+```
+### Remove PSDrive
+```PWSH
 $psDrive = Remove-PSDrive HKUDefaultUser
-# Clean up references not in use
+```
+### Clean up references not in use
+```PWSH
 $variables = Get-Variable | Where { $_.Name -ne "userLoadPath" } | foreach { $_.Name }
 foreach($var in $variables) { Remove-Variable $var -ErrorAction SilentlyContinue }
 [gc]::collect()
+```
 # Unload Hive
 reg unload $userLoadPath | Out-Host
-
 }
 
 #---------------------------------------------------------------------
 
 ## Disable Touch Screen Using PowerShell
-
+```Pwsh
 Get-PnpDevice | Where-Object {$_.FriendlyName -like '*touch screen*'} | Disable-PnpDevice -Confirm:$false
-
+```
 ## Enable Touch Screen Using PowerShell
+```Pwsh
 Get-PnpDevice | Where-Object {$_.FriendlyName -like '*touch screen*'} | Enable-PnpDevice -Confirm:$false
-
+```
 #---------------------------------------------------------------------
 
 ## Add Calendar Permissions in Office 365 via Powershell
@@ -502,47 +528,53 @@ Get-MailboxFolderPermission username:\calendar
 ### You can get the list off all user’s calendars default permissions using the following command:
 Get-Mailbox –database mbxdbname| ForEach-Object {Get-MailboxFolderPermission $_”:\calendar”} | Where {$_.User -like “Default”} | Select Identity, User, AccessRights
 
-<#You can use these available access roles:
+ > You can use these available access roles:
 
-Owner — read, create, modify and delete all items and folders. Also this role allows manage items permissions;
+> Owner — read, create, modify and delete all items and folders. Also this role allows manage items permissions;
 
-PublishingEditor — read, create, modify and delete items/subfolders;
+> PublishingEditor — read, create, modify and delete items/subfolders;
 
-Editor — read, create, modify and delete items;
+> Editor — read, create, modify and delete items;
 
-PublishingAuthor — read, create all items/subfolders. You can modify and delete only items you create;
+> PublishingAuthor — read, create all items/subfolders. You can modify and delete only items you create;
 
-Author — create and read items; edit and delete own items NonEditingAuthor – full read access and create items. You can delete only your own items;
+> Author — create and read items; edit and delete own items NonEditingAuthor – full read access and create items. You can delete only your own items;
 
-Reviewer — read only;
+> Reviewer — read only;
 
-Contributor — create items and folders;
+> Contributor — create items and folders;
 
-AvailabilityOnly — read free/busy information from calendar;
+> AvailabilityOnly — read free/busy information from calendar;
 
 LimitedDetails;
 
 None — no permissions to access folder and files.
-#>
+>
 
-# Now run the following command. In the example below, user2 would be able to open user1 calendar and edit it:
+### Now run the following command. In the example below, user2 would be able to open user1 calendar and edit it:
 Add-MailboxFolderPermission -Identity user1@domain.com:\calendar -user user2@domain.com -AccessRights Editor
 
-# If you need to change the Default permissions for the calendar folder (in order to allow all users view calendar of the specified user), run the command:
+### If you need to change the Default permissions for the calendar folder (in order to allow all users view calendar of the specified user), run the command:
 Set-MailboxFolderPermission -Identity user1@domain.com:\calendar -User Default -AccessRights Reviewer
 
-# In some cases, you need to grant Reviewer permissions on a calendar folder in all mailboxes to all users in your Exchange organization. You can make this bulk permission change using simple PowerShell script. To change Default calendar permission for all mailbox in mailbox database to Reviewer:
+### In some cases, you need to grant Reviewer permissions on a calendar folder in all mailboxes to all users in your Exchange organization. You can make this bulk permission change using simple PowerShell script. To change Default calendar permission for all mailbox in mailbox database to Reviewer:
+```Pwsh
 Get-Mailbox –database mbxdbname| ForEach-Object {Set-MailboxFolderPermission $_”:\calendar” -User Default -AccessRights Reviewer}
+```
 
-# To remove permission use Remove-MailboxFolderPermission cmdlet:
+### To remove permission use Remove-MailboxFolderPermission cmdlet:
+```pwsh
 Remove-MailboxFolderPermission -Identity user1@domain.com:\calendar –user user2@domain.com
+```
 
-# Now you can disconnect from Office 365 your session:
+### Now you can disconnect from Office 365 your session:
+```Pwsh
 Disconnect-ExchangeOnline
+```
+----------------
 
-#--------------------------------------------------------------------------------------------------------------------------------
-
-#PowerShell Script to check for external forwarding mailboxes in all Office 365 Customer tenants
+### PowerShell Script to check for external forwarding mailboxes in all Office 365 Customer tenants
+```powershell
 Function Get-ExternalMailboxForwarding{
     $credential = Get-Credential
     Connect-MsolService -Credential $credential
@@ -591,6 +623,7 @@ Function Get-ExternalMailboxForwarding{
     }
 
 }
+```
 #--------------------------------------------------------------------------------------------------------------------------------
 
 # Converting to a Shared Mailbox
@@ -640,4 +673,38 @@ Get-Mailbox | Set-MailboxJunkEmailConfiguration –Enabled $False
 ### https://www.thelazyadministrator.com/2019/11/20/office-365-email-address-policies-with-azure-automation/
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## PowerShell Basics: How to Force AzureAD Connect to Sync
+```powershell
+Import-Module ADSync
+Get-ADSyncScheduler
+```
+## The report should show intervals of 30 minute syncs and a sync policy type of Delta. A sync policy type of Initial is usually shown after AzureAD Connect's initial sync but can also be forced as detailed in the next step.
+Now run the following command to initialize the AzureAD Sync immediately.
+```powershell
+Start-ADSyncSyncCycle -PolicyType Delta
+```
+## This will only sync current changes.  Run the following command to force a complete sync but note that the length of sync time would be greatly increased.
+```Powershell
+Start-ADSyncSyncCycle -PolicyType Initial
+```
+### Power Shell commands for subscribing/un-subscribing to Office 365 mail groups
+
+**Connect to Powershell:**
+```Powershell
+Connect-ExchangeOnline -UserPrincipalName sbleyadmin@continuous.net
+```
+**Find out who is subscribed:**
+```Powershell
+Get-UnifiedGroupLinks -Identity avl@continuous.net -LinkType Subscribers
+```
+**Remove user:**
+```Powershell
+Remove-UnifiedGroupLinks -Identity avl@continuous.net -LinkType Members -Links laura@contoso.com
+```
+**Remove all users:**
+```Powershell
+Get-UnifiedGroupLinks avl@continuous.net -LinkType subscriber | % { Remove-UnifiedGroupLinks avl@continuous.net -Links $_.PrimarySmtpAddress -LinkType subscriber }
+```
+___
 
