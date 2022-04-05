@@ -329,5 +329,6 @@ ____________________________________________
 * SentinalOne (ConnectWise)
 * SentinalOne-SPP
 * OpsGenie
+* [Cam Assignment Sheet](https://continuousnet.sharepoint.com/:x:/r/sites/Operations/_layouts/15/Doc.aspx?sourcedoc=%7BF516676D-0AF4-4316-A6FF-70E0E6A291AF%7D&file=CAM%20Assisgnments.xlsx&action=edit&mobileredirect=true&wdPreviousSession=93235830-fda1-41c8-8023-1792a007225c&wdOrigin=TEAMS-ELECTRON.teams.undefined&cid=79f04265-4328-4a82-b120-3a3a0845c018)
 
 Note :- 1password delete access (Steven Bley)
