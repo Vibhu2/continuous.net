@@ -34,7 +34,7 @@ Function vbConnect-ToResources{
 #>
 Function vbGet-PartnerSyncStatus {
     $customer = Get-PartnerCustomer
-$syncinfo= Foreach ($cust in $customer){
+    $syncinfo= Foreach ($cust in $customer){
     Get-MsolCompanyInformation -TenantId $cust.CustomerId 
 }
 
@@ -136,7 +136,7 @@ Function vbget-MailboxPermission{
 #>
 
 
-#Disconnect-partnercenter
+# Disconnect-partnercenter
 # Review and Delicate calender permissions
-#Get-Mailbox -ResultSize 1000 | Select-Object -Property Name,DisplayName,Alias,IsDirSynced,Database,SamAccountName | Out-GridView
+# Get-Mailbox -ResultSize 1000 | Select-Object -Property Name,DisplayName,Alias,IsDirSynced,Database,SamAccountName | Out-GridView
 
